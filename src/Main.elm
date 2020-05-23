@@ -68,9 +68,15 @@ update msg model =
             )
 
         Ready ->
-            ( Model "/assets/before.jpg" "" None
-            , Cmd.none
-            )
+            if model.question == "" then
+                ( Model "/assets/before.jpg" "" None
+                , Cmd.none
+                )
+
+            else
+                ( model
+                , Cmd.none
+                )
 
         Clicked ->
             if String.isEmpty (String.trim model.question) == False then
