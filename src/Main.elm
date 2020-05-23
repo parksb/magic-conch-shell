@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Random
-import Html exposing (Html, Attribute, button, div, h1, img, input, text)
+import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 
@@ -90,12 +90,28 @@ subscriptions model =
 
 -- VIEW
 
+containerStyles : List (Attribute msg)
+containerStyles =
+  [ style "max-width" "650px"
+  , style "margin" " 50px auto" ]
+
+textFieldStyles : List (Attribute msg)
+textFieldStyles =
+  [ style "font-size" "18px"
+  , style "min-width" "500px" ]
+
+buttonStyles : List (Attribute msg)
+buttonStyles =
+  [ style "font-size" "17px" ]
+
 view : Model -> Html Msg
 view model =
-  div []
+  div containerStyles
     [ img [ src model.imageUrl, width 650 ] []
-    , input [ placeholder "마법의 소라고동님께 질문해보세요", value model.question, onClick Ready, onInput Change ] []
-    , button [ onClick Clicked ] [ text "질문하기" ]
+    , input (textFieldStyles ++ [placeholder "마법의 소라고동님께 질문해보세요"
+      , value model.question, onClick Ready, onInput Change
+    ]) []
+    , button (buttonStyles ++ [ onClick Clicked ]) [ text "질문하기" ]
     , h1 [] [ text (viewAnswer model.answer) ]
     ]
 
