@@ -33,7 +33,7 @@ type alias Model =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( Model "/assets/before.jpg" "" None
+    ( Model "https://raw.githubusercontent.com/ParkSB/magic-conch-shell/gh-pages/assets/before.jpg" "" None
     , Cmd.none
     )
 
@@ -69,7 +69,7 @@ update msg model =
 
         Ready ->
             if model.question == "" then
-                ( Model "/assets/before.jpg" "" None
+                ( Model "https://raw.githubusercontent.com/ParkSB/magic-conch-shell/gh-pages/assets/before.jpg" "" None
                 , Cmd.none
                 )
 
@@ -90,7 +90,7 @@ update msg model =
                 )
 
         NewAnswer newAnswer ->
-            ( Model "/assets/after.jpg" "" newAnswer
+            ( Model "https://raw.githubusercontent.com/ParkSB/magic-conch-shell/gh-pages/assets/after.jpg" "" newAnswer
             , Cmd.none
             )
 
