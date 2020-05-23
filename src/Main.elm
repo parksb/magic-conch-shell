@@ -97,13 +97,13 @@ update msg model =
 
 answerGenerator : Random.Generator Answer
 answerGenerator =
-    Random.uniform None
-        [ Yes
-        , No
-        , Nothing
-        , Neither
-        , Someday
-        , Again
+    Random.weighted
+        (25, Yes)
+        [ (25, No)
+        , (20, Nothing)
+        , (15, Someday)
+        , (10, Neither)
+        , (5, Again)
         ]
 
 
