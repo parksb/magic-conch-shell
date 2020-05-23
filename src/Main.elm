@@ -62,9 +62,14 @@ update msg model =
       )
 
     Clicked ->
-      ( model
-      , Random.generate NewAnswer answerGenerator
-      )
+      if String.isEmpty (String.trim model.question) == False then
+        ( model
+        , Random.generate NewAnswer answerGenerator
+        )
+      else
+        ( model
+        , Cmd.none
+        )
 
     NewAnswer newAnswer ->
       ( Model "/assets/after.jpg" "" newAnswer
